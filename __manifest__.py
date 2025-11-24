@@ -1,0 +1,22 @@
+{
+    "name": "Laundry Management",
+    "version": "1.0",
+    "summary": "Modul manajemen laundry untuk Odoo",
+    "description": "Modul ini memungkinkan Anda mengelola pesanan laundry, pelanggan, layanan, dan karyawan.",
+    "author": "Ariya Pratama Adjie Nugroho",
+    "website": "https://www.laundrysigap.com",
+    "category": "Services",
+    "depends": ["base"],
+    "data": [
+        "security/ir.model.access.csv",
+        "security/security.xml",
+        "views/laundry_customer_views.xml",
+        "views/laundry_service_views.xml",
+        "views/laundry_employee_views.xml",
+        "views/laundry_order_views.xml",
+        "data/demo_data.xml",
+    ],
+    "installable": True,
+    "application": True,
+    "auto_install": False,
+}
