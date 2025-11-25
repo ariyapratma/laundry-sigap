@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_laundry_customer_form" model="ir.ui.view">
+        <field name="name">laundry.customer.form</field>
+        <field name="model">laundry.customer</field>
+        <field name="arch" type="xml">
+            <form string="Pelanggan">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                    </group>
+                    <notebook>
+                        <page string="Pesanan">
+                            <field name="order_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_laundry_customer_tree" model="ir.ui.view">
+        <field name="name">laundry.customer.tree</field>
+        <field name="model">laundry.customer</field>
+        <field name="arch" type="xml">
+            <tree string="Daftar Pelanggan">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_laundry_customer" model="ir.actions.act_window">
+        <field name="name">Pelanggan Laundry</field>
+        <field name="res_model">laundry.customer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_laundry_customer" name="Pelanggan" parent="menu_laundry_root" action="action_laundry_customer" sequence="10"/>
+</odoo>

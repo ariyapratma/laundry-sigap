@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contoh Pelanggan -->
+    <record id="demo_customer_1" model="laundry.customer">
+        <field name="name">Budi Santoso</field>
+        <field name="phone">08123456789</field>
+        <field name="email">budi@example.com</field>
+        <field name="address">Jl. Merdeka No. 123, Jakarta</field>
+    </record>
+
+    <!-- Contoh Layanan -->
+    <record id="demo_service_1" model="laundry.service">
+        <field name="name">Cuci Biasa</field>
+        <!-- <field name="price">10000.0</field> -->
+        <field name="description">Cuci biasa, setrika ringan</field>
+    </record>
+
+    <record id="demo_service_2" model="laundry.service">
+        <field name="name">Cuci Kering</field>
+        <!-- <field name="price">25000.0</field> -->
+        <field name="description">Cuci kering, setrika premium</field>
+    </record>
+
+    <!-- Contoh Karyawan -->
+    <record id="demo_employee_1" model="laundry.employee">
+        <field name="name">Ani Wijaya</field>
+        <!-- <field name="position">Staff Laundry</field> -->
+        <field name="phone">08129876543</field>
+        <field name="email">ani@example.com</field>
+    </record>
+
+    <!-- Contoh Pesanan -->
+    <record id="demo_order_1" model="laundry.order">
+        <field name="name">LAU/2025/11/0001</field>
+        <field name="date_order">2025-11-24 10:00:00</field>
+        <field name="customer_id" ref="demo_customer_1"/> 
+        <field name="total_weight">5.0</field>
+        <field name="service_ids" eval="[(6,0,[ref('demo_service_1'), ref('demo_service_2')])]"/>
+        <field name="state">confirmed</field>
+    </record>
+</odoo>

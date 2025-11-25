@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_laundry_customer,laundry.customer,model_laundry_customer,,1,1,1,1
+access_laundry_service,laundry.service,model_laundry_service,,1,1,1,1
+access_laundry_employee,laundry.employee,model_laundry_employee,,1,1,1,1
+access_laundry_order,laundry.order,model_laundry_order,,1,1,1,1

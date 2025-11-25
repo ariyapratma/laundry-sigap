@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Access rights untuk model laundry.order -->
+        <record id="laundry_order_access_user" model="ir.model.access">
+            <field name="name">Laundry Order User</field>
+            <field name="model_id" ref="model_laundry_order"/>
+            <field name="group_id" eval="False"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+    </data>
+</odoo>

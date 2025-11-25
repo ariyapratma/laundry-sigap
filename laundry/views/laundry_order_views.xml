@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_laundry_order_form" model="ir.ui.view">
+        <field name="name">laundry.order.form</field>
+        <field name="model">laundry.order</field>
+        <field name="arch" type="xml">
+            <form string="Pesanan Laundry">
+                <header>
+                    <button name="action_confirm" string="Konfirmasi"
+                            type="object"
+                            modifiers="{'invisible': [['state','!=','draft']]}"/>
+
+                    <button name="action_in_progress" string="Proses"
+                            type="object"
+                            modifiers="{'invisible': [['state','!=','confirmed']]}"/>
+
+                    <button name="action_done" string="Selesai"
+                            type="object"
+                            modifiers="{'invisible': [['state','!=','in_progress']]}"/>
+
+                    <button name="action_cancel" string="Batalkan"
+                            type="object"
+                            modifiers="{'invisible': [['state','not in',['draft','confirmed','in_progress']]]}"/>
+
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+
+                    <group>
+                        <field name="date_order"/>
+                        <field name="customer_id"/>
+                        <field name="total_weight"/>
+                        <field name="total_price"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Layanan">
+                            <field name="service_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_laundry_order_tree" model="ir.ui.view">
+        <field name="name">laundry.order.tree</field>
+        <field name="model">laundry.order</field>
+        <field name="arch" type="xml">
+            <tree string="Daftar Pesanan">
+                <field name="name"/>
+                <field name="date_order"/>
+                <field name="customer_id"/>
+                <field name="total_weight"/>
+                <field name="total_price"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_laundry_order_search" model="ir.ui.view">
+        <field name="name">laundry.order.search</field>
+        <field name="model">laundry.order</field>
+        <field name="arch" type="xml">
+            <search string="Cari Pesanan">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="state"/>
+                <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Konfirmasi" name="confirmed" domain="[('state','=','confirmed')]"/>
+                <filter string="Selesai" name="done" domain="[('state','=','done')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Pelanggan" name="customer" context="{'group_by':'customer_id'}"/>
+                    <filter string="Status" name="state" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_laundry_order" model="ir.actions.act_window">
+        <field name="name">Pesanan Laundry</field>
+        <field name="res_model">laundry.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_laundry_order_search"/>
+        <field name="context">{'search_default_draft': 1}</field>
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_laundry_root"
+          name="Laundry"
+          sequence="1"/>
+
+    <!-- Sub Menu -->
+    <menuitem id="menu_laundry_order" name="Pesanan"
+              parent="menu_laundry_root"
+              action="action_laundry_order"
+              sequence="40"/>
+</odoo>
