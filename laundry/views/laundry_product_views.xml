@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View: Detail Produk Laundry -->
+    <record id="view_laundry_product_form" model="ir.ui.view">
+        <field name="name">laundry.product.form</field>
+        <field name="model">laundry.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!-- Status bisa ditambahkan nanti jika perlu -->
+                </header>
+                <sheet>
+                    <group name="top" string="Informasi Produk">
+                        <field name="name"/>
+                        <field name="price"/>
+                        <field name="unit_of_measure"/>
+                    </group>
+                    <group name="bottom" string="Deskripsi">
+                        <field name="description" placeholder="Masukkan deskripsi layanan..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View: Daftar Produk Laundry -->
+    <record id="view_laundry_product_tree" model="ir.ui.view">
+        <field name="name">laundry.product.tree</field>
+        <field name="model">laundry.product</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="price" widget="monetary"/>
+                <field name="unit_of_measure"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action: Buka Produk Laundry -->
+    <record id="action_laundry_product" model="ir.actions.act_window">
+        <field name="name">Produk Laundry</field>
+        <field name="res_model">laundry.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                <b>Tambahkan produk/jasa laundry baru.</b>
+            </p>
+            <p>
+                Contoh: Cuci Setrika, Cuci Kilat, Penyetrikaan, dll.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item: Tambahkan ke Sidebar -->
+    <!-- Jika sudah ada menu root, gunakan parent yang sama -->
+    <menuitem 
+        id="menu_laundry_root" 
+        name="Laundry" 
+        sequence="1"/>
+
+    <menuitem
+        id="menu_laundry_product"
+        name="Produk dan Layanan"
+        parent="menu_laundry_root"
+        action="action_laundry_product"
+        sequence="1"/>
+</odoo>

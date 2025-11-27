@@ -5,9 +5,15 @@ class LaundryEmployee(models.Model):
     _name = "laundry.employee"
     _description = "Karyawan Laundry"
 
-    name = fields.Char(string="Nama Karyawan", required=True)
-    phone = fields.Char(string="Nomor Telepon")
-    email = fields.Char(string="Email")
+    employee_id = fields.Many2one(
+        "hr.employee", string="Karyawan", required=True)
+
+    name = fields.Char(related="employee_id.name", string="Nama")
+
+    department = fields.Char(
+        related="employee_id.department_id.name", string="Departemen")
+    phone = fields.Char(related="employee_id.work_phone")
+    email = fields.Char(related="employee_id.work_email")
 
     # One2one ke user
     user_id = fields.Many2one("res.users", string="User Akun")

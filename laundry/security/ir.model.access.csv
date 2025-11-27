@@ -3,3 +3,5 @@ access_laundry_customer,laundry.customer,model_laundry_customer,,1,1,1,1
 access_laundry_service,laundry.service,model_laundry_service,,1,1,1,1
 access_laundry_employee,laundry.employee,model_laundry_employee,,1,1,1,1
 access_laundry_order,laundry.order,model_laundry_order,,1,1,1,1
+access_laundry_order_line,laundry.order.line,model_laundry_order_line,,1,1,1,1
+access_laundry_product,laundry.product,model_laundry_product,,1,1,1,1
